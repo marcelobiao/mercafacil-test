@@ -1,5 +1,20 @@
 [
     {
+        "name": "default",
+        "type": "sqlite",
+        "database": "../db/default.sq3",
+        "autoSchemaSync": false,
+        "synchronize": false,
+        "entities": [
+            "dist/**/auth/*.entity.js"
+        ],
+        "migrationsTableName": "migrations",
+        "migrations": ["src/database/migrationsDefault/*.ts"],
+        "cli": {
+            "migrationsDir": "src/database/migrationsDefault"
+        }
+    },
+    {
         "name": "dbVarejao",
         "type": "postgres",
         "host": "localhost",
