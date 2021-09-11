@@ -1,6 +1,6 @@
 import { MigrationInterface, QueryRunner, Table } from 'typeorm';
 
-export class CreateContactsTable1631279984771 implements MigrationInterface {
+export class CreateContactsTable1631370568846 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({
@@ -14,18 +14,13 @@ export class CreateContactsTable1631279984771 implements MigrationInterface {
             generationStrategy: 'increment',
           },
           {
-            name: 'uuid',
-            type: 'uuid',
-            isNullable: false,
-          },
-          {
             name: 'name',
-            type: 'varchar',
+            type: 'varchar(100)',
             isNullable: false,
           },
           {
             name: 'cellphone',
-            type: 'text',
+            type: 'varchar(13)',
             isNullable: false,
           },
           {
