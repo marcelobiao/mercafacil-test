@@ -14,8 +14,8 @@ export class Contact extends BaseEntity {
   name: string;
   @Column('text')
   cellphone: string;
-  @Column('timestamp')
+  /*   @Column('timestamp')
   created_at: Timestamp;
   @Column('timestamp')
-  updated_at: Timestamp;
+  updated_at: Timestamp; */
 }
