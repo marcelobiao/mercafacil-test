@@ -13,7 +13,7 @@ export class ContactVarejaoService {
   create(dataArray) {
     dataArray.map((data) => {
       const newContact = this.repo.create({
-        name: data.name.toUpperCase(),
+        name: data.name,
         cellphone: data.cellphone,
       });
       this.repo.save(newContact);
