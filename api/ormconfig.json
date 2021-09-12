@@ -5,9 +5,7 @@
         "database": "../db/default.sq3",
         "autoSchemaSync": false,
         "synchronize": false,
-        "entities": [
-            "dist/**/auth/*.entity.js"
-        ],
+        "entities": ["dist/**/*.entity.js", "**/*.entity.ts"],
         "migrationsTableName": "migrations",
         "migrations": ["src/database/migrationsDefault/*.ts"],
         "cli": {
