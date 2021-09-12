@@ -2,6 +2,7 @@ import {
   Controller,
   Get,
   Post,
+  Request,
   UploadedFile,
   UseGuards,
   UseInterceptors,
@@ -17,10 +18,12 @@ export class ContactController {
   @UseGuards(JwtAuthGuard)
   @Post()
   @UseInterceptors(FileInterceptor('file'))
-  uploadFile(@UploadedFile() file: Express.Multer.File) {
+  uploadFile(@UploadedFile() file: Express.Multer.File, @Request() req) {
     try {
       const data = JSON.parse(file.buffer.toString());
-      const contactService = this.contactFactoryService.resolve('Varejao');
+      const contactService = this.contactFactoryService.resolve(
+        req.user.company,
+      );
       contactService.create(data['contacts']);
     } catch (err) {
       console.log(err);
@@ -29,9 +32,11 @@ export class ContactController {
 
   @UseGuards(JwtAuthGuard)
   @Get()
-  index() {
+  index(@Request() req) {
     try {
-      const contactService = this.contactFactoryService.resolve('Varejao');
+      const contactService = this.contactFactoryService.resolve(
+        req.user.company,
+      );
       return contactService.index();
     } catch (err) {
       console.log(err);

@@ -1,23 +1,16 @@
 import { Injectable } from '@nestjs/common';
-import { DeleteDateColumn } from 'typeorm';
+import { InjectRepository } from '@nestjs/typeorm';
+import { DeleteDateColumn, Repository } from 'typeorm';
+import { User } from './users.entity';
 
 @Injectable()
 export class UsersService {
-  private readonly users = [
-    {
-      userId: 1,
-      username: 'varejaoUser',
-      company: '',
-      password: 'changeme',
-    },
-    {
-      userId: 2,
-      username: 'maria',
-      password: 'guess',
-    },
-  ];
+  constructor(
+    @InjectRepository(User)
+    private readonly users: Repository<User>,
+  ) {}
 
   async findOne(username: string) /* : Promise<User | undefined> */ {
-    return this.users.find((user) => user.username === username);
+    return this.users.findOneOrFail({ name: username });
   }
 }
