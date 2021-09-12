@@ -5,13 +5,9 @@ import { ClassSerializerInterceptor } from '@nestjs/common';
 import { ContactModule } from './modules/contactsImporter/contact.module';
 import { AuthModule } from './modules/auth/auth.module';
 import { UsersModule } from './modules/users/users.module';
-import { AppController } from './app.controller';
 
 @Module({
   imports: [
-    /* TypeOrmModule.forRoot({ name: 'default', autoLoadEntities: true }),
-    TypeOrmModule.forRoot({ name: 'dbVarejao', autoLoadEntities: true }),
-    TypeOrmModule.forRoot({ name: 'dbMacapa', autoLoadEntities: true }), */
     TypeOrmModule.forRoot({
       name: 'default',
       type: 'sqlite',
@@ -60,7 +56,7 @@ import { AppController } from './app.controller';
     AuthModule,
     UsersModule,
   ],
-  controllers: [AppController],
+  controllers: [],
   providers: [
     {
       provide: APP_INTERCEPTOR,

@@ -2,9 +2,10 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Contact } from '../contact.entity';
+import { ContactsServiceInterface } from './contactsServiceInterface';
 
 @Injectable()
-export class ContactMacapaService {
+export class ContactMacapaService implements ContactsServiceInterface {
   constructor(
     @InjectRepository(Contact, 'dbMacapa')
     private readonly repo: Repository<Contact>,
@@ -19,5 +20,9 @@ export class ContactMacapaService {
       this.repo.save(newContact);
     });
     return true;
+  }
+
+  index() {
+    return this.repo.find();
   }
 }

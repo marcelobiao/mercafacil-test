@@ -20,4 +20,8 @@ export class ContactVarejaoService {
     });
     return true;
   }
+
+  index() {
+    return this.repo.find();
+  }
 }
