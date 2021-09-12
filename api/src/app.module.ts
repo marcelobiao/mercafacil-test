@@ -3,6 +3,9 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { APP_INTERCEPTOR } from '@nestjs/core';
 import { ClassSerializerInterceptor } from '@nestjs/common';
 import { ContactModule } from './modules/contactsImporter/contact.module';
+import { AuthModule } from './modules/auth/auth.module';
+import { UsersModule } from './modules/users/users.module';
+import { AppController } from './app.controller';
 
 @Module({
   imports: [
@@ -54,8 +57,10 @@ import { ContactModule } from './modules/contactsImporter/contact.module';
       },
     }),
     ContactModule,
+    AuthModule,
+    UsersModule,
   ],
-  controllers: [],
+  controllers: [AppController],
   providers: [
     {
       provide: APP_INTERCEPTOR,
