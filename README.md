@@ -24,6 +24,18 @@ $ npm run start:dev
 # Api disponível em: http://localhost:3333
 ```
 
+## Usuários
+
+```
+#Usuário Macapa
+username:MacapaUser
+password:teste
+
+#Usuário Varejao
+username:VarejaoUser
+password:teste
+```
+
 ### Rotas api [InsomniaFile](InsomniaFile.json):
 
 ```
